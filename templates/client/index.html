@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suelio Auto Peças</title>
+</head>
+<body>
+
+    {% block content %}
+    <a href="add">Adicionar</a>
+
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    Nome
+                </td>
+                <td>
+                    CPF
+                </td>
+                <td>
+                    Telefone
+                </td>
+                <td>
+                    Endereço 
+                </td>
+                <td colspan="2">
+                    Ações
+                </td>
+            </tr>
+        </thead>
+          
+        <tbody>
+           
+            {% for client in client_list %}
+                <tr>
+                    
+                    <td>
+                        {{client.name}}
+                    </td>
+
+                    <td>
+                        {{client.cpf}}
+                    </td>
+
+                    <td>
+                        {{client.phone}}
+                    </td>
+
+                    <td>
+                        {{client.address}}
+                    </td>
+                    <td>
+                        <a href="edit/{{client.id}}">Editar</a>
+                    </td>
+                    <td>
+                        <a href="remove/{{client.id}}">Deletar</a>
+                    </td>
+                </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    {% endblock %}
+</body>
+</html>
