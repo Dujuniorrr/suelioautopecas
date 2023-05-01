@@ -2,13 +2,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from client.models import Client
 from client.forms import ClientForm
 
-# Create your views here.
 def index(request):
-    context = {
-        "client_list": Client.objects.all()
-    }
-    
-    return render(request, "client/index.html", context)
+    client_list = Client.objects.all()
+    return render(request, "client/index.html", {"client_list": client_list})
 
 def add(request):
     if request.method == 'POST':

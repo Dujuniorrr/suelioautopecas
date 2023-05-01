@@ -1,0 +1,36 @@
+body{
+    background-color: rgb(222, 227, 231);
+}
+
+input{
+    margin-bottom: 10px;
+}
+
+.navbar-expand-lg{
+    background-color: rgb(25, 55, 95);
+}
+.nav-item{
+    border-radius: 10px;
+    margin: 0px 10px;
+    padding: 0px 5px;
+}
+.nav-item:hover{
+    transition: 1s;
+    background-color: rgb(39, 85, 145);
+}
+
+.bg-blue{
+    background-color: rgb(39, 85, 145);
+}
+
+#table-list_length, #table-list_filter{
+    padding: 10px;
+}
+
+#table-list_length label, #table-list_filter label{
+    display: inline-flex;
+}
+
+#table-list_length select, #table-list_filter input{
+   margin: 0px 10px;
+}

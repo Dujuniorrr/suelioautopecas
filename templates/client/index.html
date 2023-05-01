@@ -1,67 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suelio Auto Peças</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-    {% block content %}
-    <a href="add">Adicionar</a>
+{% block content %}
+<div class="container mt-3 p-2">
+   
+    <div class="table-responsive tab mt-3 shadow p-4 rounded-3 bg-light">
+        <a href="add" class="btn btn-success mb-4"> <i class="fa fa-plus"></i> Adicionar</a>
 
-    <table>
-        <thead>
-            <tr>
-                <td>
+        <table class="table align-middle mt-3" id="table-list">
+          <thead>
+            <tr class="table-dark">
+                <th>
                     Nome
-                </td>
-                <td>
+                </th>
+                <th  class="d-none d-sm-table-cell">
                     CPF
-                </td>
-                <td>
+                </th>
+                <th class="d-none d-md-table-cell">
                     Telefone
-                </td>
-                <td>
+                </th>
+                <th class="d-none d-md-table-cell">
                     Endereço 
-                </td>
-                <td colspan="2">
+                </th>
+                <th>
                     Ações
-                </td>
+                </th>
             </tr>
-        </thead>
-          
-        <tbody>
-           
-            {% for client in client_list %}
+          </thead>
+          <tbody>
+                {% for client in client_list %}
                 <tr>
                     
-                    <td>
+                    <td >
                         {{client.name}}
                     </td>
 
-                    <td>
+                    <td class="d-none d-sm-table-cell">
                         {{client.cpf}}
                     </td>
 
-                    <td>
+                    <td class="d-none d-md-table-cell">
                         {{client.phone}}
                     </td>
 
-                    <td>
+                    <td class="d-none d-md-table-cell">
                         {{client.address}}
                     </td>
                     <td>
-                        <a href="edit/{{client.id}}">Editar</a>
-                    </td>
-                    <td>
-                        <a href="remove/{{client.id}}">Deletar</a>
+                        <a class="btn btn-warning m-2" href="edit/{{client.id}}"> <i class="fa-solid fa-pencil"></i> Editar </a>
+                        <a class="btn btn-danger m-2" href="remove/{{client.id}}"> <i class="fa fa-trash"></i> Deletar</a>
                     </td>
                 </tr>
-            {%endfor%}
-        </tbody>
-    </table>
-    {% endblock %}
-</body>
-</html>
+                {%endfor%}
+          </tbody>
+        </table>
+        <script>
+            $(document).ready(function(){
+                $('#table-list').DataTable({
+                    'pageLength': 10,
+                    //'lengthMenu': [[10, 20, 25, 50, -1], [10, 20, 25, 50, 'All']],
+                    responsive: true,
+                    // "bSort": false,
+                    "aaSorting": [],
+                    //"pageLength": 50,
+                    "language": {
+                        "decimal": "",
+                        "emptyTable": "Sem dados disponíveis",
+                        "info": "",
+                        "infoEmpty": "",
+                        "infoFiltered": "",
+                        "infoPostFix": "",
+                        "thousands": ",",
+                        "lengthMenu": "Mostrar _MENU_ registros",
+                        "loadingRecords": "A carregar dados...",
+                        "processing": "A processar...",
+                        "search": "Procurar:",
+                        "zeroRecords": "Não foram encontrados resultados",
+                        "paginate": {
+                            "first": "Primeiro",
+                            "last": "Último",
+                            "next": "Seguinte",
+                            "previous": "Anterior"
+                        },
+                        "aria": {
+                            "sortAscending": ": ordem crescente",
+                            "sortDescending": ": ordem decrescente"
+                        }
+                    }
+                });
+            });
+        </script>
+      </div>
+      
+</div>
+{% endblock %}
